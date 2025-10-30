@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shay Walsh - CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* Personal Details Section with Blue Background */
+        .header {
+            background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            background: rgba(255,255,255,0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .main-content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            color: #4a90e2;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #4a90e2;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #357abd;
+        }
+
+        /* Overview Section */
+        .overview {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #4a90e2;
+            margin-bottom: 30px;
+        }
+
+        .overview p {
+            font-size: 1.1em;
+            line-height: 1.7;
+        }
+
+        /* Experience Section - Highlighted */
+        .experience-item {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .job-title {
+            color: #2c5aa0;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        .job-period {
+            background: #4a90e2;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        .company-name {
+            color: #666;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .achievements {
+            list-style: none;
+        }
+
+        .achievements li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .achievements li::before {
+            content: '→';
+            color: #4a90e2;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-top: 4px solid #4a90e2;
+        }
+
+        .skill-category h4 {
+            color: #2c5aa0;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        /* Education Section */
+        .education-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #4a90e2;
+        }
+
+        .degree {
+            font-weight: 600;
+            color: #2c5aa0;
+            font-size: 1.1em;
+        }
+
+        .institution {
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .year {
+            color: #4a90e2;
+            font-weight: 500;
+        }
+
+        /* Personal Interests */
+        .interests {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+                box-shadow: none;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .main-content {
+                padding: 30px 20px;
+            }
+
+            .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .job-period {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header with Personal Details (Blue Background) -->
+        <div class="header">
+            <h1>Shay Walsh</h1>
+            <div class="contact-info">
+                <div class="contact-item">📍 The Gate Lodge, Tomard, Athy, Kildare, R14 A141</div>
+                <div class="contact-item">📱 0857206201</div>
+                <div class="contact-item">✉️ <a href="mailto:staywalsh@gmail.com">staywalsh@gmail.com</a></div>
+                <div class="contact-item">🔗 <a href="https://www.linkedin.com/in/shaywalsh196/" target="_blank">LinkedIn Profile</a></div>
+                <div class="contact-item">🎂 Born: 9th January 1991</div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <!-- Professional Overview -->
+            <div class="section">
+                <h2>Professional Overview</h2>
+                <div class="overview">
+                    <p><strong>Passionate IT Professional </strong> with 12+ years of hands-on experience in fast-paced, enterprise environments. I have a strong background in IT operations, customer support, cybersecurity, and emerging technologies, with a genuine curiosity for all things tech—including audio engineering and 3D printing. Throughout my career, I’ve supported and collaborated with a wide range of teams across different industries—from logistics and finance to sales, customer service, food service, C-suite leadership, and even meat processing. I enjoy solving problems, making systems run smoother, and helping people get the most out of their technology.</p>
+                </div>
+            </div>
+
+            <!-- Experience Section - Highlighted -->
+            <div class="section">
+                <h2>Professional Experience</h2>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">IT Systems Administrator</div>
+                            <div class="company-name">ATC Computer Transport and Logistics</div>
+                        </div>
+                        <div class="job-period">2023 - Present</div>
+                    </div>
+                    <ul class="achievements">
+                        <li>Administer Azure, Entra, SharePoint, Teams, and all Microsoft 365 cloud products across enterprise environment.</li>
+                        <li>Lead comprehensive security patch rollouts and software deployments with minimal downtime.</li>
+						<li>Coordinate Infrastructure upgrades and vulnerability patching.</li>
+                        <li>Manage IT procurement and strategic stock management across four geographic locations.</li>
+                        <li>Lead technical teams with focus on professional development and operational efficiency.</li>
+                        <li>Develop and implement IT KPIs and comprehensive reporting metrics for the business.</li>
+                        <li>Enhance cybersecurity posture through proactive threat mitigation and policy implementation.</li>
+                        <li>Integrate energy management systems and sustainability monitoring solutions.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+						<div>
+                            <div class="job-title">Senior IT Engineer</div>
+                            <div class="company-name">BWG Foods UC</div>
+                        </div>
+						<div>
+                        <div class="job-period">2012 - 2023</div>
+                    </div>
+                    <div style="margin-bottom: 15px;">
+                        <strong>Career Progression:</strong> Helpdesk Lvl1/2 <strong>(2012-2015)</strong> → IT Ops Lvl1 <strong>(2016-2020)</strong> → Senior IT Engineer <strong>(2020-2023)</strong>
+                    </div>
+                    <ul class="achievements">
+                        <li>Provided technical support across all business functions: Logistics, Finance, Marketing, Operations, HR, and C-Suite</li>
+                        <li>Managed remote support for 600+ users across 26 sites and 1000+ retail outlets</li>
+                        <li>Implemented ITIL best practices and IT project management methodologies</li>
+                        <li>Specialized in production plant IT management and supply chain IT functions</li>
+                        <li>Led IT incident management and security management initiatives</li>
+                        <li>Administered MS Office 365, VMware, and Microsoft Server infrastructure</li>
+                        <li>Managed MDM solutions: Google Enterprise, iOS DEP, InTune, MobileIron</li>
+                        <li>Maintained audio-visual setups for executive and client presentations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Technical Skills -->
+            <div class="section">
+                <h2>Core Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Cloud Platforms</h4>
+                        <p>Azure, GCP, AWS, Microsoft 365, SharePoint, Teams</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Operating Systems</h4>
+                        <p>Windows, Linux, MacOS Administration</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Networking</h4>
+                        <p>Cisco (Routers, Switches, VoIP), TCP/IP, LAN/WAN, OSI Model</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Security & Compliance</h4>
+                        <p>ISO27001, Cybersecurity, Darktrace, Qualys, Checkpoint</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Development</h4>
+                        <p>Python, SQL, Web Development, AI Tools</p>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Frameworks</h4>
+                        <p>ITIL, VMware, MDM (InTune, MobileIron)</p>
+                    </div>
+                </div>
+            </div>
+<div>
+            <!-- Education -->
+            <div class="section">
+                <h2>Education & Certifications</h2>
+
+                <div class="education-item">
+                    <div class="degree">Certificate in Arts: Sound Engineering and Music Production</div>
+                    <div class="institution">Dublin Business School</div>
+                    <div class="year">2021 - 2023 | Level 6 QQI Accredited</div>
+                </div>
+
+                <div class="education-item">
+                    <div class="degree">CompTIA A+ and CompTIA Network+</div>
+                    <div class="institution">Computer Network Installation & Maintenance</div>
+                    <div class="year">2012</div>
+                </div>
+
+                <div class="education-item">
+                    <div class="degree">Higher Certificate in Science: Information Computing Systems</div>
+                    <div class="institution">Institute of Technology, Tallaght</div>
+                    <div class="year">2009 - 2010</div>
+                </div>
+            </div>
+
+            <!-- Personal Interests -->
+            <div class="section">
+                <h2>Personal Interests & Professional Development</h2>
+                <div class="interests">
+                    <p><strong>Music & Audio Engineering:</strong> Amateur musician proficient in guitar, piano, mandolin, and bass guitar. Professionally recorded multiple EPs and albums with various bands.</p>
+
+                    <p><strong>Technology Innovation:</strong> Actively experimenting with emerging technologies including Google Project Tango, Leap Motion sensor, Raspberry Pi, Arduino microcontrollers, and additive manufacturing with FDM and SLA 3D printers.</p>
+
+                    <p><strong>Current Focus:</strong> Pursuing professional development in ISO27001 standards, compliance governance, and AI development tools - representing my next area of specialized growth.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<div>
+</body>
+</html>

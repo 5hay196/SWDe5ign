@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition Tracking Guide - Patchwork</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .resource-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-lg);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: background 0.2s ease;
+        }
+        .back-link:hover {
+            background: var(--surface-alt);
+        }
+        .macro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .macro-card {
+            background: var(--surface-alt);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            text-align: center;
+            border-top: 4px solid;
+        }
+        .macro-card.protein { border-color: #ef4444; }
+        .macro-card.carbs { border-color: #f59e0b; }
+        .macro-card.fats { border-color: #10b981; }
+        .macro-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        .plate-method {
+            background: var(--surface-alt);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+        }
+        .plate-visual {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .plate-section {
+            padding: 1.5rem;
+            border-radius: 1rem;
+            text-align: center;
+            color: white;
+            font-weight: 600;
+        }
+        .vegetables { background: #10b981; grid-column: 1 / 3; }
+        .protein { background: #ef4444; }
+        .grains { background: #f59e0b; }
+        .food-log {
+            background: var(--surface-alt);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+        }
+        .meal-entry {
+            background: var(--surface);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 0.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .add-meal-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+        .hydration-tracker {
+            background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .water-glasses {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        .glass {
+            width: 40px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            border: 3px solid rgba(255,255,255,0.5);
+            border-radius: 0 0 8px 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        .glass:hover {
+            transform: scale(1.1);
+        }
+        .glass.filled {
+            background: rgba(255,255,255,0.9);
+        }
+        .glass.filled::after {
+            content: '💧';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.2rem;
+        }
+        .meal-ideas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .meal-card {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-md);
+        }
+        .meal-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <span class="logo">🧩</span>
+                    Patchwork Resources
+                </h1>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <div class="resource-content">
+                <div style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                    <a href="../index.html" class="back-link">
+                        🏠 Home
+                    </a>
+                    <a href="../index.html#resources" class="back-link">
+                        📚 Resources
+                    </a>
+                    <a href="../sitemap.html" class="back-link">
+                        🗺️ Site Map
+                    </a>
+                </div>
+
+                <h1>🥗 Nutrition Tracking & Meal Planning Guide</h1>
+                <p class="lead">Build healthy eating habits with simple tracking tools, balanced meal planning, and evidence-based nutrition guidance.</p>
+
+                <h2>Understanding Macronutrients</h2>
+                <div class="macro-grid">
+                    <div class="macro-card protein">
+                        <div class="macro-icon">🍗</div>
+                        <h3>Protein</h3>
+                        <p><strong>4 calories/gram</strong></p>
+                        <p>Builds muscle, repairs tissue, supports immune function</p>
+                        <p><strong>Goal:</strong> 0.8-1g per lb body weight</p>
+                    </div>
+                    <div class="macro-card carbs">
+                        <div class="macro-icon">🍞</div>
+                        <h3>Carbohydrates</h3>
+                        <p><strong>4 calories/gram</strong></p>
+                        <p>Primary energy source, fuels brain and muscles</p>
+                        <p><strong>Goal:</strong> 45-65% of calories</p>
+                    </div>
+                    <div class="macro-card fats">
+                        <div class="macro-icon">🥑</div>
+                        <h3>Healthy Fats</h3>
+                        <p><strong>9 calories/gram</strong></p>
+                        <p>Hormone production, nutrient absorption, cell health</p>
+                        <p><strong>Goal:</strong> 20-35% of calories</p>
+                    </div>
+                </div>
+
+                <h2>🍽️ The Plate Method</h2>
+                <div class="plate-method">
+                    <p>Simple visual guide for balanced meals - no counting required!</p>
+                    <div class="plate-visual">
+                        <div class="plate-section vegetables">
+                            <h3>½ Plate Vegetables</h3>
+                            <p>Non-starchy veggies: leafy greens, broccoli, peppers, tomatoes</p>
+                        </div>
+                        <div class="plate-section protein">
+                            <h3>¼ Plate Protein</h3>
+                            <p>Lean meat, fish, eggs, beans, tofu</p>
+                        </div>
+                        <div class="plate-section grains">
+                            <h3>¼ Plate Grains/Starches</h3>
+                            <p>Whole grains, potatoes, rice, pasta</p>
+                        </div>
+                    </div>
+                    <p style="text-align: center; margin-top: 1rem;">
+                        <strong>💡 Plus:</strong> Add a serving of fruit and a glass of water with each meal
+                    </p>
+                </div>
+
+                <h2>💧 Daily Hydration Tracker</h2>
+                <div class="hydration-tracker">
+                    <h3>Track Your Water Intake</h3>
+                    <p>Goal: 8 glasses (64 oz / 2 liters) per day</p>
+                    <div class="water-glasses" id="water-tracker">
+                        <!-- Generated by JavaScript -->
+                    </div>
+                    <p id="water-count">0 / 8 glasses</p>
+                    <button onclick="resetWater()" style="background: rgba(255,255,255,0.2); border: 2px solid white; color: white; padding: 0.5rem 1rem; border-radius: 0.5rem; cursor: pointer; margin-top: 1rem;">Reset Today</button>
+                </div>
+
+                <h2>📝 Daily Food Log</h2>
+                <div class="food-log">
+                    <h3>Today's Meals</h3>
+                    <div id="meal-log">
+                        <!-- Meals will be added here -->
+                        <p style="color: var(--text-secondary); text-align: center;">No meals logged yet. Click "Add Meal" to start tracking!</p>
+                    </div>
+                    <button class="add-meal-btn" onclick="addMeal()">+ Add Meal</button>
+                </div>
+
+                <h2>🌟 Healthy Meal Ideas</h2>
+                <div class="meal-ideas">
+                    <div class="meal-card">
+                        <h4>🌅 Breakfast</h4>
+                        <ul style="line-height: 1.8;">
+                            <li>Greek yogurt with berries and granola</li>
+                            <li>Oatmeal with banana and almond butter</li>
+                            <li>Veggie omelet with whole grain toast</li>
+                            <li>Smoothie bowl with protein powder</li>
+                            <li>Avocado toast with poached eggs</li>
+                        </ul>
+                    </div>
+                    <div class="meal-card">
+                        <h4>🥗 Lunch</h4>
+                        <ul style="line-height: 1.8;">
+                            <li>Grilled chicken salad with mixed greens</li>
+                            <li>Quinoa bowl with roasted vegetables</li>
+                            <li>Tuna wrap with veggies and hummus</li>
+                            <li>Lentil soup with whole grain bread</li>
+                            <li>Buddha bowl with tofu and tahini</li>
+                        </ul>
+                    </div>
+                    <div class="meal-card">
+                        <h4>🍲 Dinner</h4>
+                        <ul style="line-height: 1.8;">
+                            <li>Baked salmon with sweet potato and broccoli</li>
+                            <li>Stir-fry with lean beef and mixed veggies</li>
+                            <li>Turkey chili with beans and peppers</li>
+                            <li>Grilled chicken breast with quinoa and asparagus</li>
+                            <li>Vegetarian pasta with marinara and spinach</li>
+                        </ul>
+                    </div>
+                    <div class="meal-card">
+                        <h4>🥜 Snacks</h4>
+                        <ul style="line-height: 1.8;">
+                            <li>Apple slices with peanut butter</li>
+                            <li>Carrots and hummus</li>
+                            <li>Mixed nuts (¼ cup serving)</li>
+                            <li>Protein shake or bar</li>
+                            <li>Greek yogurt with honey</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>🎯 Nutrition Goals & Tips</h2>
+                <h3>Eat More Of:</h3>
+                <ul>
+                    <li>🥬 Leafy green vegetables (spinach, kale, lettuce)</li>
+                    <li>🫐 Colorful fruits and berries</li>
+                    <li>🐟 Fatty fish (salmon, mackerel, sardines)</li>
+                    <li>🥜 Nuts, seeds, and legumes</li>
+                    <li>🌾 Whole grains (brown rice, quinoa, oats)</li>
+                    <li>💧 Water and herbal teas</li>
+                </ul>
+
+                <h3>Eat Less Of:</h3>
+                <ul>
+                    <li>🍔 Processed and fast foods</li>
+                    <li>🍭 Added sugars and sweetened beverages</li>
+                    <li>🧂 Excess sodium (limit to 2,300mg/day)</li>
+                    <li>🥓 Processed meats</li>
+                    <li>🍟 Trans fats and fried foods</li>
+                    <li>🍷 Excessive alcohol</li>
+                </ul>
+
+                <h2>📱 Recommended Nutrition Apps</h2>
+                <ul>
+                    <li><strong>MyFitnessPal:</strong> Comprehensive food database and calorie tracking</li>
+                    <li><strong>Cronometer:</strong> Detailed micronutrient tracking</li>
+                    <li><strong>Lose It!:</strong> User-friendly calorie counter with barcode scanner</li>
+                    <li><strong>Yazio:</strong> Meal planning and nutrition coaching</li>
+                    <li><strong>Fooducate:</strong> Food quality ratings and healthier alternatives</li>
+                </ul>
+
+                <h2>🔢 Quick Calorie Calculator</h2>
+                <p>Estimated Daily Calorie Needs (based on moderate activity):</p>
+                <ul>
+                    <li><strong>Women:</strong> 1,800 - 2,200 calories</li>
+                    <li><strong>Men:</strong> 2,200 - 2,800 calories</li>
+                    <li><strong>Weight Loss:</strong> Subtract 500 calories (lose ~1 lb/week)</li>
+                    <li><strong>Muscle Gain:</strong> Add 300-500 calories (with strength training)</li>
+                </ul>
+
+                <h2>⚠️ When to Consult a Professional</h2>
+                <p>Consider seeing a registered dietitian if you:</p>
+                <ul>
+                    <li>Have specific dietary restrictions or food allergies</li>
+                    <li>Are managing diabetes, heart disease, or other conditions</li>
+                    <li>Have a history of disordered eating</li>
+                    <li>Are pregnant or breastfeeding</li>
+                    <li>Need help reaching specific fitness or weight goals</li>
+                    <li>Experience digestive issues or nutrient deficiencies</li>
+                </ul>
+
+                <div style="text-align: center; margin-top: 3rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="../index.html" class="btn btn-primary">🏠 Home</a>
+                    <a href="../index.html#resources" class="btn btn-secondary">📚 Resources</a>
+                    <a href="../sitemap.html" class="btn btn-secondary">🗺️ Site Map</a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>&copy; 2024 Patchwork - Fuel your body, nourish your life</p>
+        </footer>
+    </div>
+
+    <script>
+        // Water tracker
+        function initWaterTracker() {
+            const container = document.getElementById('water-tracker');
+            const saved = localStorage.getItem('water_count_' + new Date().toDateString()) || 0;
+            let count = parseInt(saved);
+            
+            for (let i = 0; i < 8; i++) {
+                const glass = document.createElement('div');
+                glass.className = 'glass' + (i < count ? ' filled' : '');
+                glass.onclick = () => toggleGlass(i);
+                container.appendChild(glass);
+            }
+            
+            updateWaterCount(count);
+        }
+        
+        function toggleGlass(index) {
+            const glasses = document.querySelectorAll('.glass');
+            const currentCount = Array.from(glasses).filter(g => g.classList.contains('filled')).length;
+            
+            if (index < currentCount) {
+                // Remove water up to this glass
+                for (let i = index; i < glasses.length; i++) {
+                    glasses[i].classList.remove('filled');
+                }
+            } else {
+                // Fill up to this glass
+                for (let i = 0; i <= index; i++) {
+                    glasses[i].classList.add('filled');
+                }
+            }
+            
+            const newCount = Array.from(glasses).filter(g => g.classList.contains('filled')).length;
+            updateWaterCount(newCount);
+            localStorage.setItem('water_count_' + new Date().toDateString(), newCount);
+        }
+        
+        function updateWaterCount(count) {
+            document.getElementById('water-count').textContent = `${count} / 8 glasses`;
+            if (count >= 8) {
+                document.getElementById('water-count').textContent += ' 🎉 Goal reached!';
+            }
+        }
+        
+        function resetWater() {
+            document.querySelectorAll('.glass').forEach(g => g.classList.remove('filled'));
+            updateWaterCount(0);
+            localStorage.setItem('water_count_' + new Date().toDateString(), 0);
+        }
+        
+        // Meal logging
+        function addMeal() {
+            const mealName = prompt('Meal name (e.g., "Grilled chicken salad"):');
+            if (!mealName) return;
+            
+            const calories = prompt('Estimated calories (optional):');
+            const time = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+            
+            const logContainer = document.getElementById('meal-log');
+            if (logContainer.querySelector('p')) {
+                logContainer.innerHTML = '';
+            }
+            
+            const entry = document.createElement('div');
+            entry.className = 'meal-entry';
+            entry.innerHTML = `
+                <div>
+                    <strong>${mealName}</strong>
+                    <br>
+                    <small style="color: var(--text-secondary);">${time}${calories ? ` • ${calories} cal` : ''}</small>
+                </div>
+                <button onclick="this.parentElement.remove()" style="background: var(--error); color: white; border: none; padding: 0.5rem; border-radius: 0.25rem; cursor: pointer;">Remove</button>
+            `;
+            logContainer.appendChild(entry);
+            
+            // Save to localStorage
+            saveMeals();
+        }
+        
+        function saveMeals() {
+            const meals = Array.from(document.querySelectorAll('.meal-entry')).map(entry => entry.innerHTML);
+            localStorage.setItem('meals_' + new Date().toDateString(), JSON.stringify(meals));
+        }
+        
+        function loadMeals() {
+            const saved = localStorage.getItem('meals_' + new Date().toDateString());
+            if (saved) {
+                const meals = JSON.parse(saved);
+                const logContainer = document.getElementById('meal-log');
+                if (meals.length > 0) {
+                    logContainer.innerHTML = '';
+                    meals.forEach(mealHTML => {
+                        const entry = document.createElement('div');
+                        entry.className = 'meal-entry';
+                        entry.innerHTML = mealHTML;
+                        logContainer.appendChild(entry);
+                    });
+                }
+            }
+        }
+        
+        // Initialize on load
+        window.addEventListener('load', () => {
+            initWaterTracker();
+            loadMeals();
+        });
+    </script>
+</body>
+</html>

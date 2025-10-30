@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Map - Patchwork</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .sitemap-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .sitemap-section {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-md);
+        }
+        .sitemap-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .sitemap-list {
+            list-style: none;
+            padding: 0;
+        }
+        .sitemap-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .sitemap-list li:last-child {
+            border-bottom: none;
+        }
+        .sitemap-list a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+        }
+        .sitemap-list a:hover {
+            background: var(--surface-alt);
+            transform: translateX(5px);
+        }
+        .page-icon {
+            font-size: 1.2rem;
+        }
+        .page-description {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-left: 2.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <span class="logo">🧩</span>
+                    Site Map
+                </h1>
+                <p class="app-subtitle">Complete Navigation Guide</p>
+            </div>
+            <nav style="text-align: center; margin-top: 1rem;">
+                <a href="index.html" class="btn btn-secondary">← Back to Dashboard</a>
+            </nav>
+        </header>
+
+        <main class="app-main">
+            <div class="sitemap-container">
+                <div class="sitemap-section">
+                    <h2>🏠 Main Pages</h2>
+                    <ul class="sitemap-list">
+                        <li>
+                            <a href="index.html">
+                                <span class="page-icon">🏠</span>
+                                <span>Home Dashboard</span>
+                            </a>
+                            <p class="page-description">Main interface with Chat, Goals, Wellness, and Resources tabs</p>
+                        </li>
+                        <li>
+                            <a href="wellness-trends.html">
+                                <span class="page-icon">📊</span>
+                                <span>Wellness Trends & Analytics</span>
+                            </a>
+                            <p class="page-description">Interactive charts showing mood, goals, habits, and energy trends over time</p>
+                        </li>
+                        <li>
+                            <a href="sitemap.html">
+                                <span class="page-icon">🗺️</span>
+                                <span>Site Map (This Page)</span>
+                            </a>
+                            <p class="page-description">Complete navigation guide to all pages and resources</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sitemap-section">
+                    <h2>🧘 Mindfulness & Meditation Resources</h2>
+                    <ul class="sitemap-list">
+                        <li>
+                            <a href="resources/morning-meditation.html">
+                                <span class="page-icon">🌅</span>
+                                <span>5-Minute Morning Meditation Guide</span>
+                            </a>
+                            <p class="page-description">Quick daily meditation practice with step-by-step instructions</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sitemap-section">
+                    <h2>📈 Productivity & Goal Setting Resources</h2>
+                    <ul class="sitemap-list">
+                        <li>
+                            <a href="resources/smart-goals-worksheet.html">
+                                <span class="page-icon">🎯</span>
+                                <span>Interactive SMART Goals Worksheet</span>
+                            </a>
+                            <p class="page-description">Create specific, measurable, achievable, relevant, and time-bound goals</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sitemap-section">
+                    <h2>💪 Health & Fitness Resources</h2>
+                    <ul class="sitemap-list">
+                        <li>
+                            <a href="resources/home-workouts.html">
+                                <span class="page-icon">🏋️</span>
+                                <span>Complete Home Workout Programs</span>
+                            </a>
+                            <p class="page-description">5 workout types with built-in timer and progress tracking</p>
+                        </li>
+                        <li>
+                            <a href="resources/nutrition-guide.html">
+                                <span class="page-icon">🥗</span>
+                                <span>Nutrition Tracking & Meal Planning</span>
+                            </a>
+                            <p class="page-description">Macro education, plate method, water tracker, and meal logging</p>
+                        </li>
+                        <li>
+                            <a href="resources/sleep-optimization.html">
+                                <span class="page-icon">😴</span>
+                                <span>Sleep Optimization Guide</span>
+                            </a>
+                            <p class="page-description">Complete sleep hygiene checklist and optimization strategies</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sitemap-section">
+                    <h2>📝 Project Documentation</h2>
+                    <ul class="sitemap-list">
+                        <li>
+                            <span class="page-icon">📄</span>
+                            <span>PROJECT_SCOPE.md</span>
+                            <p class="page-description">Comprehensive project scope and development plan</p>
+                        </li>
+                        <li>
+                            <span class="page-icon">📖</span>
+                            <span>README.md</span>
+                            <p class="page-description">Project overview and getting started guide</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="sitemap-section">
+                    <h2>🔧 Quick Links</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                        <a href="index.html#chat" class="btn btn-primary" style="text-decoration: none;">💬 Chat</a>
+                        <a href="index.html#goals" class="btn btn-primary" style="text-decoration: none;">🎯 Goals</a>
+                        <a href="index.html#wellness" class="btn btn-primary" style="text-decoration: none;">🧠 Wellness</a>
+                        <a href="index.html#resources" class="btn btn-primary" style="text-decoration: none;">📚 Resources</a>
+                        <a href="wellness-trends.html" class="btn btn-secondary" style="text-decoration: none;">📊 Trends</a>
+                    </div>
+                </div>
+
+                <div class="sitemap-section">
+                    <h2>ℹ️ Website Statistics</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                        <div style="text-align: center; padding: 1rem; background: var(--surface-alt); border-radius: 0.5rem;">
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">3</div>
+                            <div style="color: var(--text-secondary); font-size: 0.875rem;">Main Pages</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: var(--surface-alt); border-radius: 0.5rem;">
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--secondary-color);">5</div>
+                            <div style="color: var(--text-secondary); font-size: 0.875rem;">Resource Guides</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: var(--surface-alt); border-radius: 0.5rem;">
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--accent-color);">4</div>
+                            <div style="color: var(--text-secondary); font-size: 0.875rem;">Interactive Tools</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>&copy; 2024 Patchwork - Your complete wellness companion</p>
+        </footer>
+    </div>
+</body>
+</html>

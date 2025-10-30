@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellness Trends - Patchwork</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .trends-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .trends-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .date-selector {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .date-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--border);
+            background: var(--surface);
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+        
+        .date-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .date-btn:hover:not(.active) {
+            background: var(--surface-alt);
+        }
+        
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .chart-card {
+            background: var(--surface);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+        
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .chart-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0;
+        }
+        
+        .chart-period {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            background: var(--surface-alt);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+            background: var(--surface-alt);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            overflow: hidden;
+        }
+        
+        .chart-svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .chart-line {
+            fill: none;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        .mood-line {
+            stroke: var(--primary-color);
+        }
+        
+        .goals-line {
+            stroke: var(--secondary-color);
+        }
+        
+        .habits-line {
+            stroke: var(--accent-color);
+        }
+        
+        .energy-line {
+            stroke: var(--info);
+        }
+        
+        .chart-dot {
+            r: 4;
+            fill: var(--surface);
+            stroke-width: 3;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .chart-dot:hover {
+            r: 6;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+        
+        .chart-grid-line {
+            stroke: var(--border);
+            stroke-width: 1;
+            opacity: 0.5;
+            stroke-dasharray: 2,2;
+        }
+        
+        .chart-axis {
+            stroke: var(--text-secondary);
+            stroke-width: 1;
+        }
+        
+        .chart-label {
+            fill: var(--text-secondary);
+            font-size: 12px;
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-card {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+        }
+        
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 0.5rem 0;
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+        
+        .stat-change {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 1rem;
+            margin-top: 0.5rem;
+            display: inline-block;
+        }
+        
+        .stat-change.positive {
+            background: var(--secondary-color);
+            color: white;
+        }
+        
+        .stat-change.negative {
+            background: var(--error);
+            color: white;
+        }
+        
+        .stat-change.neutral {
+            background: var(--surface-alt);
+            color: var(--text-secondary);
+        }
+        
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            z-index: 1000;
+        }
+        
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legend-color {
+            width: 16px;
+            height: 3px;
+            border-radius: 2px;
+        }
+        
+        .insights-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-top: 3rem;
+        }
+        
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .insight-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        @media (max-width: 768px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .chart-container {
+                height: 250px;
+            }
+            
+            .date-selector {
+                gap: 0.5rem;
+            }
+            
+            .date-btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <span class="logo">🧩</span>
+                    Wellness Trends
+                </h1>
+                <p class="app-subtitle">Track Your Progress Over Time</p>
+            </div>
+            <nav style="text-align: center; margin-top: 1rem;">
+                <a href="index.html" class="btn btn-secondary">← Back to Dashboard</a>
+            </nav>
+        </header>
+
+        <main class="app-main">
+            <div class="trends-container">
+                <div class="trends-header">
+                    <h2>Your Wellness Journey</h2>
+                    <p>Visualize your progress and discover patterns in your wellness data</p>
+                </div>
+
+                <div class="date-selector">
+                    <button class="date-btn" onclick="setTimeRange('7d')">7 Days</button>
+                    <button class="date-btn active" onclick="setTimeRange('30d')">30 Days</button>
+                    <button class="date-btn" onclick="setTimeRange('90d')">3 Months</button>
+                    <button class="date-btn" onclick="setTimeRange('365d')">1 Year</button>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3 class="chart-title">📊 Mood Trends</h3>
+                            <span class="chart-period" id="mood-period">Last 30 days</span>
+                        </div>
+                        <div class="chart-container">
+                            <svg class="chart-svg" id="mood-chart"></svg>
+                        </div>
+                        <div class="legend">
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: var(--primary-color);"></div>
+                                <span>Daily Mood</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3 class="chart-title">🎯 Goals Progress</h3>
+                            <span class="chart-period" id="goals-period">Last 30 days</span>
+                        </div>
+                        <div class="chart-container">
+                            <svg class="chart-svg" id="goals-chart"></svg>
+                        </div>
+                        <div class="legend">
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: var(--secondary-color);"></div>
+                                <span>Average Progress</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3 class="chart-title">✅ Habits Completion</h3>
+                            <span class="chart-period" id="habits-period">Last 30 days</span>
+                        </div>
+                        <div class="chart-container">
+                            <svg class="chart-svg" id="habits-chart"></svg>
+                        </div>
+                        <div class="legend">
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: var(--accent-color);"></div>
+                                <span>Completion Rate</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3 class="chart-title">⚡ Energy Levels</h3>
+                            <span class="chart-period" id="energy-period">Last 30 days</span>
+                        </div>
+                        <div class="chart-container">
+                            <svg class="chart-svg" id="energy-chart"></svg>
+                        </div>
+                        <div class="legend">
+                            <div class="legend-item">
+                                <div class="legend-color" style="background: var(--info);"></div>
+                                <span>Energy Rating</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">😊</div>
+                        <div class="stat-value" id="avg-mood">0.0</div>
+                        <div class="stat-label">Average Mood</div>
+                        <div class="stat-change neutral" id="mood-change">No change</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <div class="stat-value" id="avg-goals">0%</div>
+                        <div class="stat-label">Goals Progress</div>
+                        <div class="stat-change neutral" id="goals-change">No change</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-value" id="habit-rate">0%</div>
+                        <div class="stat-label">Habit Success</div>
+                        <div class="stat-change neutral" id="habits-change">No change</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">🔥</div>
+                        <div class="stat-value" id="streak-count">0</div>
+                        <div class="stat-label">Current Streak</div>
+                        <div class="stat-change neutral" id="streak-change">Days</div>
+                    </div>
+                </div>
+
+                <div class="insights-section">
+                    <h3>🧠 AI Insights</h3>
+                    <div class="insights-grid" id="insights-grid">
+                        <!-- Insights will be generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>&copy; 2024 Patchwork - Understanding your patterns for better wellness</p>
+            <p style="margin-top: 0.5rem;"><a href="sitemap.html" style="color: var(--primary-color); text-decoration: none;">🗺️ Site Map</a> | <a href="index.html" style="color: var(--primary-color); text-decoration: none;">🏠 Home</a></p>
+        </footer>
+    </div>
+
+    <!-- Tooltip for chart interactions -->
+    <div class="tooltip" id="chart-tooltip"></div>
+
+    <script src="js/wellness-trends.js"></script>
+</body>
+</html>

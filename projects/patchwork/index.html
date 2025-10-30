@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patchwork - Your Life Coach Assistant</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <span class="logo">🧩</span>
+                    Patchwork
+                </h1>
+                <p class="app-subtitle">Your Personal Life Coach Assistant</p>
+            </div>
+            <nav class="app-nav">
+                <button class="nav-btn active" data-tab="chat" aria-label="Chat">
+                    💬 Chat
+                </button>
+                <button class="nav-btn" data-tab="goals" aria-label="Goals">
+                    🎯 Goals
+                </button>
+                <button class="nav-btn" data-tab="wellness" aria-label="Wellness">
+                    🧠 Wellness
+                </button>
+                <button class="nav-btn" data-tab="resources" aria-label="Resources">
+                    📚 Resources
+                </button>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main class="app-main">
+            <!-- Chat Tab -->
+            <section class="tab-content active" id="chat-tab">
+                <div class="chat-container">
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="message bot-message">
+                            <div class="message-avatar">🧩</div>
+                            <div class="message-content">
+                                <p>Hello! I'm Patchwork, your personal life coach assistant. I'm here to help you achieve your goals, build better habits, and navigate life's challenges. What would you like to work on today?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="chat-form" id="chat-form">
+                        <div class="input-container">
+                            <input 
+                                type="text" 
+                                id="message-input" 
+                                placeholder="Type your message here..."
+                                aria-label="Type your message"
+                                autocomplete="off"
+                            >
+                            <button type="submit" aria-label="Send message">
+                                <span>Send</span> →
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Goals Tab -->
+            <section class="tab-content" id="goals-tab">
+                <div class="goals-container">
+                    <div class="goals-header">
+                        <h2>Your Goals</h2>
+                        <button class="btn btn-primary" id="add-goal-btn">+ Add New Goal</button>
+                    </div>
+                    
+                    <div class="goals-grid" id="goals-grid">
+                        <!-- Goals will be populated by JavaScript -->
+                    </div>
+
+                    <!-- Add Goal Modal -->
+                    <div class="modal" id="goal-modal">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3>Create New Goal</h3>
+                                <button class="modal-close" id="close-goal-modal">&times;</button>
+                            </div>
+                            <form class="goal-form" id="goal-form">
+                                <div class="form-group">
+                                    <label for="goal-title">Goal Title</label>
+                                    <input type="text" id="goal-title" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="goal-description">Description</label>
+                                    <textarea id="goal-description" rows="3"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="goal-category">Category</label>
+                                    <select id="goal-category">
+                                        <option value="health">Health & Fitness</option>
+                                        <option value="career">Career & Professional</option>
+                                        <option value="relationships">Relationships</option>
+                                        <option value="personal">Personal Development</option>
+                                        <option value="financial">Financial</option>
+                                        <option value="creative">Creative & Hobbies</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="goal-deadline">Target Date</label>
+                                    <input type="date" id="goal-deadline">
+                                </div>
+                                <div class="form-actions">
+                                    <button type="button" class="btn btn-secondary" id="cancel-goal">Cancel</button>
+                                    <button type="submit" class="btn btn-primary">Create Goal</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Wellness Tab -->
+            <section class="tab-content" id="wellness-tab">
+                <div class="wellness-container">
+                    <h2>Wellness Tracking</h2>
+                    
+                    <div class="wellness-cards">
+                        <div class="wellness-card">
+                            <h3>Today's Mood</h3>
+                            <div class="mood-selector">
+                                <button class="mood-btn" data-mood="1">😞</button>
+                                <button class="mood-btn" data-mood="2">😐</button>
+                                <button class="mood-btn" data-mood="3">🙂</button>
+                                <button class="mood-btn" data-mood="4">😊</button>
+                                <button class="mood-btn" data-mood="5">😄</button>
+                            </div>
+                            <p class="mood-status" id="mood-status">How are you feeling today?</p>
+                        </div>
+
+                        <div class="wellness-card">
+                            <h3>Habits Tracker</h3>
+                            <div class="habits-list">
+                                <div class="habit-item">
+                                    <input type="checkbox" id="habit-exercise">
+                                    <label for="habit-exercise">Exercise (30 min)</label>
+                                </div>
+                                <div class="habit-item">
+                                    <input type="checkbox" id="habit-meditation">
+                                    <label for="habit-meditation">Meditation (10 min)</label>
+                                </div>
+                                <div class="habit-item">
+                                    <input type="checkbox" id="habit-reading">
+                                    <label for="habit-reading">Reading (20 min)</label>
+                                </div>
+                                <div class="habit-item">
+                                    <input type="checkbox" id="habit-water">
+                                    <label for="habit-water">Drink 8 glasses of water</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="wellness-card">
+                            <h3>Weekly Insights</h3>
+                            <div class="insight-chart">
+                                <div class="chart-placeholder">
+                                    📈 Mood trend: Improving (+15%)
+                                    <br>
+                                    🎯 Goals progress: 3/5 on track
+                                    <br>
+                                    ⚡ Energy levels: Stable
+                                    <br><br>
+                                    <a href="wellness-trends.html" class="btn btn-primary" style="display: inline-block; margin-top: 1rem; text-decoration: none; padding: 0.5rem 1rem; font-size: 0.875rem;">
+                                        📊 View Detailed Trends
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Resources Tab -->
+            <section class="tab-content" id="resources-tab">
+                <div class="resources-container">
+                    <h2>Resources & Tools</h2>
+                    
+                    <div class="resource-categories">
+                        <div class="resource-category">
+                            <h3>🧘 Mindfulness & Meditation</h3>
+                            <ul class="resource-list">
+                                <li><a href="resources/morning-meditation.html" class="resource-link">5-Minute Morning Meditation Guide</a></li>
+                                <li><a href="#" class="resource-link">Breathing Techniques for Anxiety</a></li>
+                                <li><a href="#" class="resource-link">Mindfulness in Daily Activities</a></li>
+                                <li><a href="#" class="resource-link">Body Scan Meditation Practice</a></li>
+                                <li><a href="#" class="resource-link">Progressive Muscle Relaxation</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="resource-category">
+                            <h3>📈 Productivity & Goal Setting</h3>
+                            <ul class="resource-list">
+                                <li><a href="resources/smart-goals-worksheet.html" class="resource-link">Interactive SMART Goals Worksheet</a></li>
+                                <li><a href="#" class="resource-link">Time Blocking Template</a></li>
+                                <li><a href="#" class="resource-link">Habit Stacking Guide</a></li>
+                                <li><a href="#" class="resource-link">Weekly Planning System</a></li>
+                                <li><a href="#" class="resource-link">Productivity Methods Comparison</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="resource-category">
+                            <h3>💪 Health & Fitness</h3>
+                            <ul class="resource-list">
+                                <li><a href="resources/home-workouts.html" class="resource-link">Complete Home Workout Programs</a></li>
+                                <li><a href="resources/nutrition-guide.html" class="resource-link">Nutrition Tracking & Meal Planning</a></li>
+                                <li><a href="resources/sleep-optimization.html" class="resource-link">Sleep Optimization Guide</a></li>
+                                <li><a href="#" class="resource-link">Hydration Monitoring Guide</a></li>
+                                <li><a href="#" class="resource-link">Stress Management Techniques</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="resource-category">
+                            <h3>🌱 Personal Development</h3>
+                            <ul class="resource-list">
+                                <li><a href="#" class="resource-link">Self-Reflection Journal Prompts</a></li>
+                                <li><a href="#" class="resource-link">Confidence Building Exercises</a></li>
+                                <li><a href="#" class="resource-link">Values Clarification Worksheet</a></li>
+                                <li><a href="#" class="resource-link">Emotional Intelligence Assessment</a></li>
+                                <li><a href="#" class="resource-link">Life Visioning Exercise</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="resource-category">
+                            <h3>🧠 Mental Health & Wellness</h3>
+                            <ul class="resource-list">
+                                <li><a href="#" class="resource-link">Anxiety Management Toolkit</a></li>
+                                <li><a href="#" class="resource-link">Depression Support Resources</a></li>
+                                <li><a href="#" class="resource-link">Mood Tracking Templates</a></li>
+                                <li><a href="#" class="resource-link">Crisis Support Contacts</a></li>
+                                <li><a href="#" class="resource-link">Cognitive Behavioral Therapy Basics</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="resource-category">
+                            <h3>💰 Financial Wellness</h3>
+                            <ul class="resource-list">
+                                <li><a href="#" class="resource-link">Budget Planning Worksheet</a></li>
+                                <li><a href="#" class="resource-link">Emergency Fund Calculator</a></li>
+                                <li><a href="#" class="resource-link">Debt Reduction Strategies</a></li>
+                                <li><a href="#" class="resource-link">Investment Basics Guide</a></li>
+                                <li><a href="#" class="resource-link">Financial Goal Setting Template</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <p>&copy; 2024 Patchwork - Your journey to a better you starts here.</p>
+            <p style="margin-top: 0.5rem;"><a href="sitemap.html" style="color: var(--primary-color); text-decoration: none;">🗺️ Site Map</a></p>
+        </footer>
+    </div>
+
+    <!-- Loading indicator -->
+    <div class="loading-indicator" id="loading-indicator">
+        <div class="loading-spinner"></div>
+        <p>Patchwork is thinking...</p>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Optimization Guide - Patchwork</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .resource-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-lg);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: background 0.2s ease;
+        }
+        .back-link:hover {
+            background: var(--surface-alt);
+        }
+        .sleep-phases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .phase-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            text-align: center;
+        }
+        .phase-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        .checklist {
+            background: var(--surface-alt);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+        .checklist-checkbox {
+            width: 24px;
+            height: 24px;
+            min-width: 24px;
+            accent-color: var(--primary-color);
+            cursor: pointer;
+        }
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1rem;
+            background: var(--surface-alt);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+        }
+        .time-slot {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .activity {
+            color: var(--text-primary);
+        }
+        .warning-box {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+        }
+        .tip-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .tip-card {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-md);
+            border-top: 4px solid var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <span class="logo">🧩</span>
+                    Patchwork Resources
+                </h1>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <div class="resource-content">
+                <div style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                    <a href="../index.html" class="back-link">
+                        🏠 Home
+                    </a>
+                    <a href="../index.html#resources" class="back-link">
+                        📚 Resources
+                    </a>
+                    <a href="../sitemap.html" class="back-link">
+                        🗺️ Site Map
+                    </a>
+                </div>
+
+                <h1>😴 Sleep Optimization & Hygiene Guide</h1>
+                <p class="lead">Master the art of restorative sleep with evidence-based strategies for better sleep quality, faster sleep onset, and increased daytime energy.</p>
+
+                <h2>Understanding Sleep Cycles</h2>
+                <div class="sleep-phases">
+                    <div class="phase-card">
+                        <div class="phase-icon">🌙</div>
+                        <h4>Stage 1-2</h4>
+                        <p>Light Sleep<br>5-25 min</p>
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-icon">💤</div>
+                        <h4>Stage 3</h4>
+                        <p>Deep Sleep<br>20-40 min</p>
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-icon">🌀</div>
+                        <h4>REM</h4>
+                        <p>Dream Sleep<br>10-60 min</p>
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-icon">🔄</div>
+                        <h4>Full Cycle</h4>
+                        <p>Complete<br>90-120 min</p>
+                    </div>
+                </div>
+
+                <p><strong>💡 Pro Tip:</strong> Aim for 4-6 complete sleep cycles (7-9 hours) per night. Plan your wake time in 90-minute increments from your bedtime for optimal alertness.</p>
+
+                <h2>🛏️ Sleep Hygiene Checklist</h2>
+                <div class="checklist">
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checklist-checkbox" id="sleep1">
+                        <label for="sleep1">
+                            <strong>Consistent Schedule:</strong> Go to bed and wake up at the same time every day, even on weekends (±30 minutes max)
+                        </label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checklist-checkbox" id="sleep2">
+                        <label for="sleep2">
+                            <strong>Cool Environment:</strong> Keep bedroom temperature between 60-67°F (15-19°C) for optimal sleep
+                        </label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checklist-checkbox" id="sleep3">
+                        <label for="sleep3">
+                            <strong>Complete Darkness:</strong> Use blackout curtains or sleep mask to block all light sources
+                        </label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checklist-checkbox" id="sleep4">
+                        <label for="sleep4">
+                            <strong>White Noise/Silence:</strong> Use earplugs or white noise machine to mask disruptive sounds
+                        </label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checklist-checkbox" id="sleep5">
+                        <label for="sleep5">
+                            <strong>No Screens 1 Hour Before Bed:</strong> Avoid phones, tablets, TVs, and computers before sleep
+                        </label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checklist-checkbox" id="sleep6">
+                        <label for="sleep6">
+                            <strong>Caffeine Cutoff:</strong> No caffeine after 2 PM (caffeine half-life is 5-6 hours)
+                        </label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checklist-checkbox" id="sleep7">
+                        <label for="sleep7">
+                            <strong>Alcohol Limitation:</strong> Avoid alcohol 3-4 hours before bed (disrupts REM sleep)
+                        </label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checklist-checkbox" id="sleep8">
+                        <label for="sleep8">
+                            <strong>Light Dinner:</strong> Finish eating 2-3 hours before bedtime
+                        </label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checklist-checkbox" id="sleep9">
+                        <label for="sleep9">
+                            <strong>Exercise Daily:</strong> Get 20-30 minutes of exercise, but finish at least 4 hours before bed
+                        </label>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="checklist-checkbox" id="sleep10">
+                        <label for="sleep10">
+                            <strong>Comfortable Bedding:</strong> Invest in quality mattress, pillows, and breathable sheets
+                        </label>
+                    </div>
+                </div>
+
+                <h2>📅 Ideal Evening Routine</h2>
+                <div class="schedule-grid">
+                    <div class="time-slot">3 hours before</div>
+                    <div class="activity">🍽️ Finish eating dinner</div>
+                    
+                    <div class="time-slot">2 hours before</div>
+                    <div class="activity">🚫 Stop work-related activities</div>
+                    
+                    <div class="time-slot">90 min before</div>
+                    <div class="activity">🛁 Take warm bath/shower (body cooling afterward promotes sleep)</div>
+                    
+                    <div class="time-slot">1 hour before</div>
+                    <div class="activity">📱 Turn off all screens and bright lights</div>
+                    
+                    <div class="time-slot">45 min before</div>
+                    <div class="activity">📖 Read a physical book or practice gentle stretching</div>
+                    
+                    <div class="time-slot">30 min before</div>
+                    <div class="activity">🧘 Do relaxation exercises (deep breathing, meditation)</div>
+                    
+                    <div class="time-slot">15 min before</div>
+                    <div class="activity">✍️ Journal or practice gratitude reflection</div>
+                    
+                    <div class="time-slot">Bedtime</div>
+                    <div class="activity">😴 Lights out - aim for same time each night</div>
+                </div>
+
+                <div class="warning-box">
+                    <h3>⚠️ When NOT to Use Your Bed</h3>
+                    <p>Your bed should be associated ONLY with sleep and intimacy. Avoid:</p>
+                    <ul>
+                        <li>❌ Working on laptop in bed</li>
+                        <li>❌ Watching TV or scrolling social media</li>
+                        <li>❌ Eating meals</li>
+                        <li>❌ Having stressful conversations</li>
+                    </ul>
+                    <p><strong>The 20-Minute Rule:</strong> If you can't fall asleep after 20 minutes, get up and do a quiet activity until you feel sleepy.</p>
+                </div>
+
+                <h2>🌅 Morning Optimization</h2>
+                <div class="tip-grid">
+                    <div class="tip-card">
+                        <h4>☀️ Light Exposure</h4>
+                        <p>Get 10-30 minutes of bright light (ideally sunlight) within 30 minutes of waking. This sets your circadian rhythm for the day.</p>
+                    </div>
+                    <div class="tip-card">
+                        <h4>💧 Hydrate First</h4>
+                        <p>Drink 16-20 oz of water upon waking to rehydrate after 8 hours without fluids.</p>
+                    </div>
+                    <div class="tip-card">
+                        <h4>⏰ Consistent Wake Time</h4>
+                        <p>Wake at the same time every day, even weekends. This is more important than a consistent bedtime.</p>
+                    </div>
+                    <div class="tip-card">
+                        <h4>🏃 Morning Movement</h4>
+                        <p>Light exercise or stretching upon waking helps you feel alert and reinforces your wake signal.</p>
+                    </div>
+                </div>
+
+                <h2>💤 Advanced Sleep Strategies</h2>
+                
+                <h3>4-7-8 Breathing Technique</h3>
+                <ol>
+                    <li>Exhale completely through your mouth</li>
+                    <li>Close mouth, inhale through nose for 4 counts</li>
+                    <li>Hold breath for 7 counts</li>
+                    <li>Exhale completely through mouth for 8 counts</li>
+                    <li>Repeat cycle 3-4 times</li>
+                </ol>
+
+                <h3>Progressive Muscle Relaxation</h3>
+                <ol>
+                    <li>Starting with your toes, tense muscles tightly for 5 seconds</li>
+                    <li>Release and relax for 10 seconds</li>
+                    <li>Move up through feet, calves, thighs, abdomen, arms, shoulders, neck, and face</li>
+                    <li>Notice the sensation of relaxation spreading through your body</li>
+                </ol>
+
+                <h3>Cognitive Shuffle</h3>
+                <ol>
+                    <li>Think of a random, emotionally neutral word (e.g., "bedtime")</li>
+                    <li>For each letter, visualize objects starting with that letter</li>
+                    <li>Spend 5-10 seconds visualizing each object in detail</li>
+                    <li>Move to the next letter when you run out of objects</li>
+                    <li>This occupies your mind without engaging analytical thinking</li>
+                </ol>
+
+                <h2>📱 Recommended Sleep Apps & Tools</h2>
+                <ul>
+                    <li><strong>Sleep Cycle:</strong> Smart alarm that wakes you during light sleep phase</li>
+                    <li><strong>Headspace/Calm:</strong> Guided sleep meditations and stories</li>
+                    <li><strong>f.lux/Night Shift:</strong> Reduces blue light from screens in evening</li>
+                    <li><strong>White Noise/Noisli:</strong> Customizable ambient sounds</li>
+                    <li><strong>Sleep Diary:</strong> Track patterns to identify what helps/hurts your sleep</li>
+                </ul>
+
+                <h2>🚨 When to See a Doctor</h2>
+                <p>Consult a healthcare provider if you experience:</p>
+                <ul>
+                    <li>Chronic difficulty falling or staying asleep (3+ times/week for 3+ months)</li>
+                    <li>Loud snoring or gasping for air during sleep (possible sleep apnea)</li>
+                    <li>Extreme daytime sleepiness despite adequate sleep time</li>
+                    <li>Unusual movements or behaviors during sleep</li>
+                    <li>Sleep issues affecting your work, relationships, or quality of life</li>
+                </ul>
+
+                <div style="text-align: center; margin-top: 3rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="../index.html" class="btn btn-primary">🏠 Home</a>
+                    <a href="../index.html#resources" class="btn btn-secondary">📚 Resources</a>
+                    <a href="../sitemap.html" class="btn btn-secondary">🗺️ Site Map</a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>&copy; 2024 Patchwork - Sweet dreams and restful nights</p>
+        </footer>
+    </div>
+
+    <script>
+        // Save checklist progress
+        document.querySelectorAll('.checklist-checkbox').forEach(checkbox => {
+            const saved = localStorage.getItem('sleep_checklist_' + checkbox.id);
+            if (saved === 'true') {
+                checkbox.checked = true;
+            }
+            
+            checkbox.addEventListener('change', (e) => {
+                localStorage.setItem('sleep_checklist_' + e.target.id, e.target.checked);
+                
+                // Check if all items are checked
+                const allChecked = Array.from(document.querySelectorAll('.checklist-checkbox'))
+                    .every(cb => cb.checked);
+                
+                if (allChecked) {
+                    alert('🌟 Congratulations! You\'ve completed the sleep hygiene checklist. Keep up these habits for better sleep!');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

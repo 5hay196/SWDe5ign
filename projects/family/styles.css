@@ -1,0 +1,404 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #FFB6C1;
+    --secondary-color: #B4D7FF;
+    --accent-color: #FFF5BA;
+    --text-dark: #333;
+    --text-light: #666;
+    --bg-light: #FFF9F0;
+    --white: #FFFFFF;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: 0 2px 10px var(--shadow);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tagline {
+    font-size: 1.1rem;
+    font-style: italic;
+    opacity: 0.95;
+}
+
+/* Navigation */
+nav {
+    background-color: var(--white);
+    box-shadow: 0 2px 5px var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 1rem 0;
+}
+
+nav li {
+    margin: 0 1rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+/* Main Content */
+main {
+    padding: 2rem 0;
+}
+
+section {
+    background-color: var(--white);
+    margin: 2rem 0;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px var(--shadow);
+}
+
+section h2 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    border-bottom: 3px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+}
+
+/* Hero Section */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.hero-content h2 {
+    text-align: left;
+    border-bottom: none;
+    margin-bottom: 1rem;
+}
+
+.baby-info {
+    background-color: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.baby-info p {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.baby-info strong {
+    color: var(--primary-color);
+}
+
+.hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(135deg, var(--accent-color), var(--secondary-color));
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-light);
+    font-size: 1.2rem;
+    border: 3px dashed var(--primary-color);
+}
+
+/* About Section */
+.about-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+/* Gallery Section */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.gallery-item {
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+}
+
+.gallery-item .image-placeholder {
+    width: 100%;
+    height: 200px;
+    font-size: 1rem;
+}
+
+.photo-caption {
+    margin-top: 0.5rem;
+    color: var(--text-light);
+    font-style: italic;
+}
+
+/* Milestones Section */
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.milestone-item {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--bg-light);
+}
+
+.milestone-item:last-child {
+    border-bottom: none;
+}
+
+.milestone-date {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    padding: 1rem;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    height: fit-content;
+}
+
+.milestone-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.milestone-content p {
+    color: var(--text-light);
+}
+
+/* Messages Section */
+.messages-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.message-card {
+    background-color: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.message-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px var(--shadow);
+}
+
+.message-text {
+    font-style: italic;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.message-author {
+    text-align: right;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Add Message Form */
+.add-message-form {
+    background-color: var(--bg-light);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.add-message-form h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.add-message-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.add-message-form textarea,
+.add-message-form input {
+    padding: 0.8rem;
+    border: 2px solid var(--secondary-color);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.add-message-form textarea:focus,
+.add-message-form input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.add-message-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.add-message-form button {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-message-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow);
+}
+
+.add-message-form button:active {
+    transform: translateY(0);
+}
+
+/* Footer */
+footer {
+    background-color: var(--text-dark);
+    color: var(--white);
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav li {
+        margin: 0.5rem 0;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-content h2 {
+        text-align: center;
+    }
+
+    .milestone-item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .milestone-date {
+        width: 150px;
+        margin: 0 auto;
+    }
+
+    section {
+        padding: 1.5rem;
+    }
+
+    section h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .tagline {
+        font-size: 0.9rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .messages-container {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Home Workout Routines - Patchwork</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .resource-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-lg);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: background 0.2s ease;
+        }
+        .back-link:hover {
+            background: var(--surface-alt);
+        }
+        .workout-tabs {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .workout-tab {
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--border);
+            border-radius: 1rem;
+            background: var(--surface);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            min-width: 120px;
+        }
+        .workout-tab.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        .workout-tab:hover:not(.active) {
+            background: var(--surface-alt);
+        }
+        .workout-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        .workout-content.active {
+            display: block;
+        }
+        .exercise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .exercise-card {
+            background: var(--surface-alt);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            border-left: 4px solid var(--secondary-color);
+        }
+        .exercise-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        .exercise-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .exercise-time {
+            background: var(--secondary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+        }
+        .exercise-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        .exercise-tips {
+            background: var(--surface);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border-left: 3px solid var(--accent-color);
+        }
+        .workout-timer {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .timer-display {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+        }
+        .timer-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .timer-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .timer-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .progress-tracker {
+            background: var(--surface-alt);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+        }
+        .progress-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .progress-item:last-child {
+            border-bottom: none;
+        }
+        .progress-checkbox {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <span class="logo">🧩</span>
+                    Patchwork Resources
+                </h1>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <div class="resource-content">
+                <div style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                    <a href="../index.html" class="back-link">
+                        🏠 Home
+                    </a>
+                    <a href="../index.html#resources" class="back-link">
+                        📚 Resources
+                    </a>
+                    <a href="../sitemap.html" class="back-link">
+                        🗺️ Site Map
+                    </a>
+                </div>
+
+                <h1>💪 Quick Home Workout Routines</h1>
+                <p class="lead">No gym? No problem! These effective home workouts require minimal or no equipment and can be completed in 15-45 minutes. Perfect for busy schedules and small spaces.</p>
+
+                <div class="workout-timer">
+                    <h3>🕐 Workout Timer</h3>
+                    <div class="timer-display" id="timer-display">00:00</div>
+                    <div class="timer-controls">
+                        <button class="timer-btn" onclick="startTimer(15)">15 min</button>
+                        <button class="timer-btn" onclick="startTimer(30)">30 min</button>
+                        <button class="timer-btn" onclick="startTimer(45)">45 min</button>
+                        <button class="timer-btn" onclick="pauseTimer()">Pause</button>
+                        <button class="timer-btn" onclick="resetTimer()">Reset</button>
+                    </div>
+                </div>
+
+                <div class="workout-tabs">
+                    <div class="workout-tab active" onclick="showWorkout('beginner')">
+                        <div>🌱</div>
+                        <div>Beginner</div>
+                        <small>15-20 min</small>
+                    </div>
+                    <div class="workout-tab" onclick="showWorkout('cardio')">
+                        <div>❤️</div>
+                        <div>Cardio</div>
+                        <small>20-30 min</small>
+                    </div>
+                    <div class="workout-tab" onclick="showWorkout('strength')">
+                        <div>💪</div>
+                        <div>Strength</div>
+                        <small>25-35 min</small>
+                    </div>
+                    <div class="workout-tab" onclick="showWorkout('hiit')">
+                        <div>🔥</div>
+                        <div>HIIT</div>
+                        <small>15-25 min</small>
+                    </div>
+                    <div class="workout-tab" onclick="showWorkout('flexibility')">
+                        <div>🧘</div>
+                        <div>Flexibility</div>
+                        <small>20-30 min</small>
+                    </div>
+                </div>
+
+                <!-- Beginner Workout -->
+                <div class="workout-content active" id="beginner-workout">
+                    <h2>🌱 Beginner Full Body (15-20 minutes)</h2>
+                    <p>Perfect for those just starting their fitness journey or returning after a break.</p>
+
+                    <div class="exercise-grid">
+                        <div class="exercise-card">
+                            <div class="exercise-header">
+                                <div class="exercise-name">Bodyweight Squats</div>
+                                <div class="exercise-time">2 sets × 10 reps</div>
+                            </div>
+                            <div class="exercise-description">
+                                Stand with feet shoulder-width apart, lower your body as if sitting back into a chair, then return to standing.
+                            </div>
+                            <div class="exercise-tips">
+                                <strong>💡 Tip:</strong> Keep your chest up and weight in your heels. If full squats are difficult, try sitting down and standing up from a chair.
+                            </div>
+                        </div>
+
+                        <div class="exercise-card">
+                            <div class="exercise-header">
+                                <div class="exercise-name">Modified Push-ups</div>
+                                <div class="exercise-time">2 sets × 8 reps</div>
+                            </div>
+                            <div class="exercise-description">
+                                Perform push-ups on your knees or against a wall to build strength gradually.
+                            </div>
+                            <div class="exercise-tips">
+                                <strong>💡 Tip:</strong> Keep your body in a straight line. Progress from wall push-ups to knee push-ups to full push-ups.
+                            </div>
+                        </div>
+
+                        <div class="exercise-card">
+                            <div class="exercise-header">
+                                <div class="exercise-name">Standing March</div>
+                                <div class="exercise-time">3 sets × 30 seconds</div>
+                            </div>
+                            <div class="exercise-description">
+                                March in place, lifting your knees as high as comfortable while pumping your arms.
+                            </div>
+                            <div class="exercise-tips">
+                                <strong>💡 Tip:</strong> Keep your core engaged and maintain good posture throughout the movement.
+                            </div>
+                        </div>
+
+                        <div class="exercise-card">
+                            <div class="exercise-header">
+                                <div class="exercise-name">Seated Leg Extensions</div>
+                                <div class="exercise-time">2 sets × 10 each leg</div>
+                            </div>
+                            <div class="exercise-description">
+                                Sit on a chair and extend one leg straight out, hold for 2 seconds, then lower.
+                            </div>
+                            <div class="exercise-tips">
+                                <strong>💡 Tip:</strong> Flex your foot and squeeze your thigh muscle at the top of the movement.
+                            </div>
+                        </div>
+
+                        <div class="exercise-card">
+                            <div class="exercise-header">
+                                <div class="exercise-name">Arm Circles</div>
+                                <div class="exercise-time">2 sets × 15 each direction</div>
+                            </div>
+                            <div class="exercise-description">
+                                Extend arms out to sides and make small circles, gradually increasing size.
+                            </div>
+                            <div class="exercise-tips">
+                                <strong>💡 Tip:</strong> Keep shoulders down and back, focus on controlled movements.
+                            </div>
+                        </div>
+
+                        <div class="exercise-card">
+                            <div class="exercise-header">
+                                <div class="exercise-name">Basic Stretching</div>
+                                <div class="exercise-time">5 minutes</div>
+                            </div>
+                            <div class="exercise-description">
+                                Gentle stretches for major muscle groups: neck, shoulders, back, hips, and legs.
+                            </div>
+                            <div class="exercise-tips">
+                                <strong>💡 Tip:</strong> Hold each stretch for 15-30 seconds, breathe deeply and never force a stretch.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cardio Workout -->
+                <div class="workout-content" id="cardio-workout">
+                    <h2>❤️ Heart-Pumping Cardio (20-30 minutes)</h2>
+                    <p>Get your heart rate up and burn calories with these dynamic movements.</p>
+
+                    <div class="exercise-grid">
+                        <div class="exercise-card">
+                            <div class="exercise-header">
+                                <div class="exercise-name">Jumping Jacks</div>
+                                <div class="exercise-time">3 sets × 45 seconds</div>
+                            </div>
+                            <div class="exercise-description">
+                                Classic full-body cardio exercise. Jump feet apart while raising arms overhead, then return to start.
+                            </div>
+                            <div class="exercise-tips">
+                                <strong>💡 Tip:</strong> Land softly on the balls of your feet. Modify by stepping side to side instead of jumping.
+                            </div>
+                        </div>
+
+                        <div class="exercise-card">
+                            <div class="exercise-header">
+                                <div class="exercise-name">High Knees</div>
+                                <div class="exercise-time">3 sets × 30 seconds</div>
+                            </div>
+                            <div class="exercise-description">
+                                Run in place bringing knees up toward your chest as high as possible.
+                            </div>
+                            <div class="exercise-tips">
+                                <strong>💡 Tip:</strong> Keep your core tight and pump your arms. Focus on lifting knees rather than speed.
+                            </div>
+                        </div>
+
+                        <div class="exercise-card">
+                            <div class="exercise-header">
+                                <div class="exercise-name">Butt Kicks</div>
+                                <div class="exercise-time">3 sets × 30 seconds</div>
+                            </div>
+                            <div class="exercise-description">
+                                Jog in place while kicking your heels up toward your glutes.
+                            </div>
+                            <div class="exercise-tips">
+                                <strong>💡 Tip:</strong> Keep your knees pointing down and focus on kicking heels up, not forward.
+                            </div>
+                        </div>
+
+                        <div class="exercise-card">
+                            <div class="exercise-header">
+                                <div class="exercise-name">Mountain Climbers</div>
+                                <div class="exercise-time">3 sets × 30 seconds</div>
+                            </div>
+                            <div class="exercise-description">
+                                Start in plank position, alternate bringing knees to chest in a running motion.
+                            </div>
+                            <div class="exercise-tips">
+                                <strong>💡 Tip:</strong> Keep hips level and core engaged. Maintain plank position throughout.
+                            </div>
+                        </div>
+
+                        <div class="exercise-card">
+                            <div class="exercise-header">
+                                <div class="exercise-name">Step-ups (using stairs)</div>
+                                <div class="exercise-time">3 sets × 20 total</div>
+                            </div>
+                            <div class="exercise-description">
+                                Step up onto a sturdy surface, then step down. Alternate leading leg.
+                            </div>
+                            <div class="exercise-tips">
+                                <strong>💡 Tip:</strong> Use your leg muscles, not momentum. Control both the up and down movement.
+                            </div>
+                        </div>
+
+                        <div class="exercise-card">
+                            <div class="exercise-header">
+                                <div class="exercise-name">Dancing/Active Recovery</div>
+                                <div class="exercise-time">5 minutes</div>
+                            </div>
+                            <div class="exercise-description">
+                                Put on your favorite music and dance, or do gentle movement to cool down.
+                            </div>
+                            <div class="exercise-tips">
+                                <strong>💡 Tip:</strong> Have fun with it! Any movement counts. Gradually bring your heart rate down.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other workout contents would be similar but I'll create abbreviated versions -->
+                <div class="workout-content" id="strength-workout">
+                    <h2>💪 Strength Building (25-35 minutes)</h2>
+                    <p>Build muscle and improve functional strength with bodyweight exercises.</p>
+                    <div class="exercise-grid">
+                        <div class="exercise-card">
+                            <div class="exercise-header">
+                                <div class="exercise-name">Push-up Variations</div>
+                                <div class="exercise-time">3 sets × 8-12 reps</div>
+                            </div>
+                            <div class="exercise-description">Standard, incline, or decline push-ups based on your fitness level.</div>
+                        </div>
+                        <div class="exercise-card">
+                            <div class="exercise-header">
+                                <div class="exercise-name">Bodyweight Squats</div>
+                                <div class="exercise-time">3 sets × 12-15 reps</div>
+                            </div>
+                            <div class="exercise-description">Deep squats focusing on form and controlled movement.</div>
+                        </div>
+                        <div class="exercise-card">
+                            <div class="exercise-header">
+                                <div class="exercise-name">Plank Hold</div>
+                                <div class="exercise-time">3 sets × 30-60 seconds</div>
+                            </div>
+                            <div class="exercise-description">Hold plank position maintaining straight body line.</div>
+                        </div>
+                        <div class="exercise-card">
+                            <div class="exercise-header">
+                                <div class="exercise-name">Lunges</div>
+                                <div class="exercise-time">3 sets × 10 each leg</div>
+                            </div>
+                            <div class="exercise-description">Forward, reverse, or stationary lunges for leg strength.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="workout-content" id="hiit-workout">
+                    <h2>🔥 High-Intensity Interval Training (15-25 minutes)</h2>
+                    <p>Maximum results in minimum time with intense bursts followed by brief recovery.</p>
+                    <div class="exercise-grid">
+                        <div class="exercise-card">
+                            <div class="exercise-header">
+                                <div class="exercise-name">Circuit Training</div>
+                                <div class="exercise-time">4 rounds × 30sec work/15sec rest</div>
+                            </div>
+                            <div class="exercise-description">Burpees, jump squats, push-ups, mountain climbers - repeat circuit.</div>
+                        </div>
+                        <div class="exercise-card">
+                            <div class="exercise-header">
+                                <div class="exercise-name">Tabata Protocol</div>
+                                <div class="exercise-time">4 minutes × 2 exercises</div>
+                            </div>
+                            <div class="exercise-description">20 seconds all-out effort, 10 seconds rest, repeat 8 times.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="workout-content" id="flexibility-workout">
+                    <h2>🧘 Flexibility & Mobility (20-30 minutes)</h2>
+                    <p>Improve range of motion, reduce stiffness, and enhance recovery.</p>
+                    <div class="exercise-grid">
+                        <div class="exercise-card">
+                            <div class="exercise-header">
+                                <div class="exercise-name">Full Body Stretch Sequence</div>
+                                <div class="exercise-time">15-20 minutes</div>
+                            </div>
+                            <div class="exercise-description">Systematic stretching of all major muscle groups.</div>
+                        </div>
+                        <div class="exercise-card">
+                            <div class="exercise-header">
+                                <div class="exercise-name">Yoga Flow</div>
+                                <div class="exercise-time">10-15 minutes</div>
+                            </div>
+                            <div class="exercise-description">Gentle yoga poses focusing on flexibility and mindfulness.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="progress-tracker">
+                    <h3>📈 Today's Workout Progress</h3>
+                    <div class="progress-item">
+                        <span>Warm-up completed</span>
+                        <input type="checkbox" class="progress-checkbox" onchange="updateProgress()">
+                    </div>
+                    <div class="progress-item">
+                        <span>Main workout completed</span>
+                        <input type="checkbox" class="progress-checkbox" onchange="updateProgress()">
+                    </div>
+                    <div class="progress-item">
+                        <span>Cool-down/stretching completed</span>
+                        <input type="checkbox" class="progress-checkbox" onchange="updateProgress()">
+                    </div>
+                    <div class="progress-item">
+                        <span>Hydration goal met (8 glasses water)</span>
+                        <input type="checkbox" class="progress-checkbox" onchange="updateProgress()">
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="../index.html" class="btn btn-primary">🏠 Home</a>
+                    <a href="../index.html#resources" class="btn btn-secondary">📚 Resources</a>
+                    <a href="../sitemap.html" class="btn btn-secondary">🗺️ Site Map</a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>&copy; 2024 Patchwork - Your body is your temple, treat it well.</p>
+        </footer>
+    </div>
+
+    <script>
+        let timer = null;
+        let timeLeft = 0;
+        let isRunning = false;
+
+        function showWorkout(type) {
+            // Hide all workout contents
+            document.querySelectorAll('.workout-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            // Remove active class from all tabs
+            document.querySelectorAll('.workout-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            // Show selected workout
+            document.getElementById(type + '-workout').classList.add('active');
+            // Add active class to clicked tab
+            event.target.closest('.workout-tab').classList.add('active');
+        }
+
+        function startTimer(minutes) {
+            clearInterval(timer);
+            timeLeft = minutes * 60;
+            isRunning = true;
+            
+            timer = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    isRunning = false;
+                    alert('Workout complete! Great job! 🎉');
+                    return;
+                }
+                
+                timeLeft--;
+                updateTimerDisplay();
+            }, 1000);
+            
+            updateTimerDisplay();
+        }
+
+        function pauseTimer() {
+            if (isRunning) {
+                clearInterval(timer);
+                isRunning = false;
+            } else if (timeLeft > 0) {
+                startTimer(Math.ceil(timeLeft / 60));
+            }
+        }
+
+        function resetTimer() {
+            clearInterval(timer);
+            timeLeft = 0;
+            isRunning = false;
+            document.getElementById('timer-display').textContent = '00:00';
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer-display').textContent = 
+                `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.progress-checkbox');
+            const completed = Array.from(checkboxes).filter(cb => cb.checked).length;
+            
+            if (completed === checkboxes.length) {
+                setTimeout(() => {
+                    alert('Congratulations! You completed your entire workout routine! 🌟');
+                }, 500);
+            }
+            
+            // Save progress to localStorage
+            const progress = Array.from(checkboxes).map(cb => cb.checked);
+            localStorage.setItem('patchwork_workout_progress', JSON.stringify({
+                date: new Date().toDateString(),
+                progress: progress
+            }));
+        }
+
+        // Load saved progress
+        window.addEventListener('load', () => {
+            const saved = localStorage.getItem('patchwork_workout_progress');
+            if (saved) {
+                const data = JSON.parse(saved);
+                if (data.date === new Date().toDateString()) {
+                    const checkboxes = document.querySelectorAll('.progress-checkbox');
+                    data.progress.forEach((checked, index) => {
+                        if (checkboxes[index]) {
+                            checkboxes[index].checked = checked;
+                        }
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

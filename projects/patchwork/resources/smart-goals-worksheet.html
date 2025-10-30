@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMART Goals Worksheet - Patchwork</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .resource-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-lg);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: background 0.2s ease;
+        }
+        .back-link:hover {
+            background: var(--surface-alt);
+        }
+        .smart-acronym {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .smart-item {
+            background: var(--surface-alt);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            text-align: center;
+            border-top: 4px solid var(--primary-color);
+        }
+        .smart-letter {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        .worksheet-section {
+            background: var(--surface-alt);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+        }
+        .worksheet-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .form-field label {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        .form-field input,
+        .form-field textarea {
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+        }
+        .form-field input:focus,
+        .form-field textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        .examples-box {
+            background: linear-gradient(135deg, var(--info), var(--primary-color));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin: 1.5rem 0;
+        }
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .example-card {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-md);
+        }
+        .example-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .progress-tracker {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .milestone {
+            text-align: center;
+            padding: 1rem;
+            background: var(--surface-alt);
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .milestone:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        .milestone.completed {
+            background: var(--secondary-color);
+            color: white;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <span class="logo">🧩</span>
+                    Patchwork Resources
+                </h1>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <div class="resource-content">
+                <div style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                    <a href="../index.html" class="back-link">
+                        🏠 Home
+                    </a>
+                    <a href="../index.html#resources" class="back-link">
+                        📚 Resources
+                    </a>
+                    <a href="../sitemap.html" class="back-link">
+                        🗺️ Site Map
+                    </a>
+                </div>
+
+                <h1>🎯 SMART Goals Worksheet</h1>
+                <p class="lead">Transform your dreams into achievable goals with the SMART framework. This interactive worksheet will guide you through creating specific, measurable, and actionable objectives.</p>
+
+                <h2>What are SMART Goals?</h2>
+                <div class="smart-acronym">
+                    <div class="smart-item">
+                        <div class="smart-letter">S</div>
+                        <h4>Specific</h4>
+                        <p>Clear and well-defined</p>
+                    </div>
+                    <div class="smart-item">
+                        <div class="smart-letter">M</div>
+                        <h4>Measurable</h4>
+                        <p>Quantifiable progress</p>
+                    </div>
+                    <div class="smart-item">
+                        <div class="smart-letter">A</div>
+                        <h4>Achievable</h4>
+                        <p>Realistic and attainable</p>
+                    </div>
+                    <div class="smart-item">
+                        <div class="smart-letter">R</div>
+                        <h4>Relevant</h4>
+                        <p>Meaningful to your life</p>
+                    </div>
+                    <div class="smart-item">
+                        <div class="smart-letter">T</div>
+                        <h4>Time-bound</h4>
+                        <p>Has a clear deadline</p>
+                    </div>
+                </div>
+
+                <div class="worksheet-section">
+                    <h2>📝 Interactive Goal Worksheet</h2>
+                    <form class="worksheet-form" id="smart-goal-form">
+                        <div class="form-field">
+                            <label for="goal-area">🎯 What area of your life do you want to improve?</label>
+                            <select id="goal-area" onchange="updateExamples()">
+                                <option value="">Select an area...</option>
+                                <option value="health">Health & Fitness</option>
+                                <option value="career">Career & Professional</option>
+                                <option value="relationships">Relationships</option>
+                                <option value="personal">Personal Development</option>
+                                <option value="financial">Financial</option>
+                                <option value="creative">Creative & Hobbies</option>
+                            </select>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="specific">S - Specific: What exactly do you want to accomplish?</label>
+                            <textarea id="specific" rows="3" placeholder="Be as detailed as possible. Instead of 'get fit', write 'complete a 30-minute workout routine 4 times per week'"></textarea>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="measurable">M - Measurable: How will you track progress?</label>
+                            <input type="text" id="measurable" placeholder="e.g., 'lose 10 pounds', 'read 12 books', 'save $1000'">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="achievable">A - Achievable: Is this goal realistic for you right now?</label>
+                            <textarea id="achievable" rows="2" placeholder="Consider your current situation, resources, and time availability"></textarea>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="relevant">R - Relevant: Why is this goal important to you?</label>
+                            <textarea id="relevant" rows="3" placeholder="Connect this goal to your values, long-term vision, or life purpose"></textarea>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="timebound">T - Time-bound: When will you complete this goal?</label>
+                            <input type="date" id="timebound">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="obstacles">🚧 Potential Obstacles & Solutions:</label>
+                            <textarea id="obstacles" rows="3" placeholder="What might prevent you from achieving this goal? How will you overcome these challenges?"></textarea>
+                        </div>
+
+                        <div class="form-field">
+                            <label>🏆 Key Milestones (click to mark as completed):</label>
+                            <div class="progress-tracker">
+                                <div class="milestone" onclick="toggleMilestone(this)">
+                                    <div>25%</div>
+                                    <small>Quarter</small>
+                                </div>
+                                <div class="milestone" onclick="toggleMilestone(this)">
+                                    <div>50%</div>
+                                    <small>Halfway</small>
+                                </div>
+                                <div class="milestone" onclick="toggleMilestone(this)">
+                                    <div>75%</div>
+                                    <small>Three-quarters</small>
+                                </div>
+                                <div class="milestone" onclick="toggleMilestone(this)">
+                                    <div>100%</div>
+                                    <small>Complete</small>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" onclick="generateGoalSummary()">📋 Generate Goal Summary</button>
+                        <button class="btn btn-secondary" onclick="saveGoalData()">💾 Save Goal</button>
+                        <button class="btn btn-secondary" onclick="clearForm()">🔄 Start Over</button>
+                    </div>
+                </div>
+
+                <div id="goal-examples" class="examples-box" style="display: none;">
+                    <h3>💡 Examples for Your Selected Area</h3>
+                    <div id="examples-content"></div>
+                </div>
+
+                <div class="examples-grid">
+                    <div class="example-card">
+                        <h4>🏃 Fitness Example</h4>
+                        <p><strong>Goal:</strong> "I will run a 5K race in under 30 minutes by December 31st, 2024."</p>
+                        <ul>
+                            <li><strong>Specific:</strong> Run 5K in under 30 minutes</li>
+                            <li><strong>Measurable:</strong> 5 kilometers, under 30 minutes</li>
+                            <li><strong>Achievable:</strong> Currently walk 3K regularly</li>
+                            <li><strong>Relevant:</strong> Improve cardiovascular health</li>
+                            <li><strong>Time-bound:</strong> December 31st, 2024</li>
+                        </ul>
+                    </div>
+
+                    <div class="example-card">
+                        <h4>📚 Learning Example</h4>
+                        <p><strong>Goal:</strong> "I will complete an online course in digital marketing and earn a certificate by March 15th, 2024."</p>
+                        <ul>
+                            <li><strong>Specific:</strong> Complete digital marketing course</li>
+                            <li><strong>Measurable:</strong> Earn certificate with 80% score</li>
+                            <li><strong>Achievable:</strong> Can dedicate 5 hours/week</li>
+                            <li><strong>Relevant:</strong> Advance my career</li>
+                            <li><strong>Time-bound:</strong> March 15th, 2024</li>
+                        </ul>
+                    </div>
+
+                    <div class="example-card">
+                        <h4>💰 Financial Example</h4>
+                        <p><strong>Goal:</strong> "I will build an emergency fund of $5,000 by saving $200 per month for 25 months."</p>
+                        <ul>
+                            <li><strong>Specific:</strong> Build emergency fund</li>
+                            <li><strong>Measurable:</strong> $5,000 total, $200/month</li>
+                            <li><strong>Achievable:</strong> Can reduce dining out expenses</li>
+                            <li><strong>Relevant:</strong> Financial security and peace of mind</li>
+                            <li><strong>Time-bound:</strong> 25 months from start date</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="../index.html" class="btn btn-primary">🏠 Home</a>
+                    <a href="../index.html#resources" class="btn btn-secondary">📚 Resources</a>
+                    <a href="../sitemap.html" class="btn btn-secondary">🗺️ Site Map</a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>&copy; 2024 Patchwork - Turn your dreams into achievable goals.</p>
+        </footer>
+    </div>
+
+    <script>
+        function updateExamples() {
+            const area = document.getElementById('goal-area').value;
+            const examplesDiv = document.getElementById('goal-examples');
+            const contentDiv = document.getElementById('examples-content');
+
+            const examples = {
+                health: "• 'Exercise for 30 minutes, 4 times per week for 3 months'\n• 'Lose 15 pounds by eating 5 servings of vegetables daily'\n• 'Meditate for 10 minutes every morning for 30 days'",
+                career: "• 'Complete Python certification course by end of quarter'\n• 'Network with 2 new professionals in my field each month'\n• 'Apply for 5 relevant job positions within 60 days'",
+                relationships: "• 'Have one meaningful conversation with family weekly'\n• 'Plan monthly date nights for the next 6 months'\n• 'Express gratitude to friends via text twice per week'",
+                personal: "• 'Read 24 books this year (2 per month)'\n• 'Learn conversational Spanish in 6 months using Duolingo'\n• 'Complete a public speaking course by summer'",
+                financial: "• 'Save $10,000 for house down payment in 18 months'\n• 'Reduce monthly expenses by $300 through budgeting'\n• 'Increase income by 15% through side freelancing'",
+                creative: "• 'Complete oil painting course and create 10 paintings'\n• 'Write and publish one blog post per week for a year'\n• 'Learn guitar and perform 3 songs at open mic night'"
+            };
+
+            if (area && examples[area]) {
+                contentDiv.innerHTML = examples[area].split('\n').map(ex => `<p>${ex}</p>`).join('');
+                examplesDiv.style.display = 'block';
+            } else {
+                examplesDiv.style.display = 'none';
+            }
+        }
+
+        function toggleMilestone(element) {
+            element.classList.toggle('completed');
+        }
+
+        function generateGoalSummary() {
+            const specific = document.getElementById('specific').value;
+            const measurable = document.getElementById('measurable').value;
+            const timebound = document.getElementById('timebound').value;
+
+            if (!specific || !measurable || !timebound) {
+                alert('Please fill in at least the Specific, Measurable, and Time-bound fields to generate a summary.');
+                return;
+            }
+
+            const summary = `My SMART Goal: ${specific}\n\nMeasurement: ${measurable}\nDeadline: ${new Date(timebound).toLocaleDateString()}\n\nThis goal is important because: ${document.getElementById('relevant').value || 'Not specified'}\n\nPotential obstacles: ${document.getElementById('obstacles').value || 'Not identified'}`;
+
+            alert(summary);
+
+            // Optional: Copy to clipboard
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(summary).then(() => {
+                    console.log('Goal summary copied to clipboard!');
+                });
+            }
+        }
+
+        function saveGoalData() {
+            const goalData = {
+                area: document.getElementById('goal-area').value,
+                specific: document.getElementById('specific').value,
+                measurable: document.getElementById('measurable').value,
+                achievable: document.getElementById('achievable').value,
+                relevant: document.getElementById('relevant').value,
+                timebound: document.getElementById('timebound').value,
+                obstacles: document.getElementById('obstacles').value,
+                milestones: Array.from(document.querySelectorAll('.milestone.completed')).map(m => m.textContent.trim())
+            };
+
+            localStorage.setItem('patchwork_smart_goal', JSON.stringify(goalData));
+            alert('Goal saved successfully! You can return to this worksheet anytime.');
+        }
+
+        function clearForm() {
+            if (confirm('Are you sure you want to clear all fields?')) {
+                document.getElementById('smart-goal-form').reset();
+                document.querySelectorAll('.milestone').forEach(m => m.classList.remove('completed'));
+                document.getElementById('goal-examples').style.display = 'none';
+            }
+        }
+
+        // Load saved data on page load
+        window.addEventListener('load', () => {
+            const saved = localStorage.getItem('patchwork_smart_goal');
+            if (saved) {
+                const data = JSON.parse(saved);
+                Object.keys(data).forEach(key => {
+                    const element = document.getElementById(key);
+                    if (element && data[key]) {
+                        element.value = data[key];
+                    }
+                });
+                updateExamples();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5-Minute Morning Meditation Guide - Patchwork</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .resource-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-lg);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: background 0.2s ease;
+        }
+        .back-link:hover {
+            background: var(--surface-alt);
+        }
+        .meditation-steps {
+            counter-reset: step-counter;
+        }
+        .meditation-step {
+            counter-increment: step-counter;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            background: var(--surface-alt);
+            border-radius: 1rem;
+            border-left: 4px solid var(--primary-color);
+            position: relative;
+        }
+        .meditation-step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: -15px;
+            top: 15px;
+            background: var(--primary-color);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.875rem;
+        }
+        .tip-box {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .benefit-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--surface-alt);
+            border-radius: 0.75rem;
+        }
+        .benefit-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <span class="logo">🧩</span>
+                    Patchwork Resources
+                </h1>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <div class="resource-content">
+                <div style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                    <a href="../index.html" class="back-link">
+                        🏠 Home
+                    </a>
+                    <a href="../index.html#resources" class="back-link">
+                        📚 Resources
+                    </a>
+                    <a href="../sitemap.html" class="back-link">
+                        🗺️ Site Map
+                    </a>
+                </div>
+
+                <h1>🧘 5-Minute Morning Meditation Guide</h1>
+                <p class="lead">Start your day with clarity, focus, and inner peace. This simple 5-minute meditation practice can transform your mornings and set a positive tone for the entire day.</p>
+
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">🧠</div>
+                        <h4>Mental Clarity</h4>
+                        <p>Clears mental fog and improves focus</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">💆</div>
+                        <h4>Stress Relief</h4>
+                        <p>Reduces cortisol and anxiety levels</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">⚡</div>
+                        <h4>Energy Boost</h4>
+                        <p>Natural energy without caffeine</p>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="benefit-icon">😌</div>
+                        <h4>Emotional Balance</h4>
+                        <p>Promotes emotional regulation</p>
+                    </div>
+                </div>
+
+                <h2>🌅 The 5-Minute Morning Practice</h2>
+
+                <div class="meditation-steps">
+                    <div class="meditation-step">
+                        <h3>Find Your Space (30 seconds)</h3>
+                        <p>Choose a quiet, comfortable spot where you won't be disturbed. Sit comfortably with your back straight, either on a cushion, chair, or your bed. Turn off notifications on your devices.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <h3>Set Your Intention (30 seconds)</h3>
+                        <p>Close your eyes gently and take a moment to set a positive intention for your day. This could be something like "I choose peace," "I am open to possibilities," or "I approach today with kindness."</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <h3>Deep Breathing (2 minutes)</h3>
+                        <p>Begin with three deep, cleansing breaths. Inhale slowly through your nose for 4 counts, hold for 4 counts, then exhale through your mouth for 6 counts. Then return to natural breathing, simply observing each inhale and exhale.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <h3>Body Awareness (1.5 minutes)</h3>
+                        <p>Bring attention to your body. Starting from the top of your head, mentally scan down through your face, neck, shoulders, arms, chest, back, and legs. Notice any tension and consciously relax those areas.</p>
+                    </div>
+
+                    <div class="meditation-step">
+                        <h3>Gratitude Reflection (30 seconds)</h3>
+                        <p>Think of three things you're grateful for right now. They can be simple: your comfortable bed, the morning light, or an upcoming opportunity. Feel the warmth of appreciation in your heart.</p>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <h3>💡 Pro Tips for Success</h3>
+                    <ul>
+                        <li><strong>Consistency over perfection:</strong> Even 2-3 minutes is better than skipping entirely</li>
+                        <li><strong>Use a gentle alarm:</strong> Set a soft, natural sound to end your session</li>
+                        <li><strong>Start small:</strong> If 5 minutes feels long, begin with 2-3 minutes and gradually increase</li>
+                        <li><strong>Same time, same place:</strong> Habits form faster with consistent timing and location</li>
+                        <li><strong>Be patient:</strong> The benefits compound over time—give yourself at least 2 weeks to feel the difference</li>
+                    </ul>
+                </div>
+
+                <h2>🎯 Weekly Challenge</h2>
+                <p>Commit to this 5-minute morning practice for 7 consecutive days. Track your mood and energy levels each day to see how meditation impacts your overall wellbeing.</p>
+
+                <h3>📱 Helpful Apps & Tools</h3>
+                <ul>
+                    <li><strong>Insight Timer:</strong> Free meditation timer with ambient sounds</li>
+                    <li><strong>Headspace:</strong> Guided morning meditations</li>
+                    <li><strong>Calm:</strong> Daily calm sessions and nature sounds</li>
+                    <li><strong>Simple habit tracker:</strong> Mark your daily meditation completion</li>
+                </ul>
+
+                <h3>🌱 Next Steps</h3>
+                <p>Once you've established this 5-minute practice, consider exploring:</p>
+                <ul>
+                    <li>Extending to 10-15 minute sessions</li>
+                    <li>Adding evening wind-down meditation</li>
+                    <li>Trying different meditation styles (loving-kindness, body scan, visualization)</li>
+                    <li>Joining a local meditation group or online community</li>
+                </ul>
+
+                <div style="text-align: center; margin-top: 3rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="../index.html" class="btn btn-primary">🏠 Home</a>
+                    <a href="../index.html#resources" class="btn btn-secondary">📚 Resources</a>
+                    <a href="../sitemap.html" class="btn btn-secondary">🗺️ Site Map</a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>&copy; 2024 Patchwork - Your journey to mindfulness starts with a single breath.</p>
+        </footer>
+    </div>
+</body>
+</html>
