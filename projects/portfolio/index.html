@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio - SWDe5ign</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <style>
+        .portfolio-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .portfolio-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .portfolio-header h1 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .cv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .cv-card {
+            background: white;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .cv-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-5px);
+        }
+
+        .cv-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+        }
+
+        .cv-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .cv-card a {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+        }
+
+        .cv-card a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">SWDe5ign</div>
+            <ul class="nav-menu">
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../patchwork/index.html">Wellness</a></li>
+                <li><a href="../family/index.html">Family</a></li>
+                <li><a href="../business/index.html">Business Platform</a></li>
+                <li><a href="index.html">Portfolio</a></li>
+                <li><a href="../docs/index.html">Documentation</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="portfolio-container">
+        <a href="../../index.html" class="back-link">← Back to Home</a>
+        
+        <div class="portfolio-header">
+            <h1>Professional Portfolio & CV</h1>
+            <p>Select a CV version to view detailed professional information</p>
+        </div>
+
+        <div class="cv-grid">
+            <div class="cv-card">
+                <h3>Primary CV</h3>
+                <p>Complete professional CV with latest experience and skills</p>
+                <a href="SWCV.html">View CV</a>
+            </div>
+
+            <div class="cv-card">
+                <h3>CV 2025</h3>
+                <p>Updated 2025 version with enhanced formatting</p>
+                <a href="CV 2025.html">View CV</a>
+            </div>
+
+            <div class="cv-card">
+                <h3>CV 2025 v2</h3>
+                <p>Alternative 2025 layout with additional details</p>
+                <a href="CV 2025_2.html">View CV</a>
+            </div>
+
+            <div class="cv-card">
+                <h3>CV 2025 (Div Layout)</h3>
+                <p>Modern div-based responsive layout version</p>
+                <a href="CV 2025_div .html">View CV</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 SWDe5ign. All rights reserved.</p>
+    </footer>
+
+    <script src="../../assets/js/main.js"></script>
+</body>
+</html>
