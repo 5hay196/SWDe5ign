@@ -1,0 +1,46 @@
+# SD52 Security - DO NOT COMMIT SENSITIVE DATA
+
+# Secure directory - NEVER commit
+secure/
+secure/*
+
+# Config files that may contain secrets
+config/*.key
+config/*.pem
+config/*.p12
+config/*.pfx
+config/*password*
+config/*secret*
+config/*.enc
+config/api_keys.*
+config/database.*
+config/.env*
+
+# Backup files
+backups/*
+!backups/.gitkeep
+
+# Log files
+logs/*.log
+logs/*/*.log
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Encrypted files (decrypt locally)
+*.gpg
+*.enc
+*.aes
+
+# Database dumps
+*.sql
+*.dump
+*.db
+
+# Keep directory structure
+!config/.gitkeep
+!data/.gitkeep
+!logs/.gitkeep
+!secure/.gitkeep
